@@ -21,12 +21,14 @@ body {
 }
 
 .login-content {
-    margin-top: 80px;
     text-align: center;
 }
 
 h2 {
-    margin-bottom: 20px;
+    font-size: 30px;
+    color: #1e594f;
+    font-weight: bolder;
+    text-align: center;
 }
 
 input[type="text"],
