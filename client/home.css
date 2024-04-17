@@ -317,3 +317,38 @@ body {
         flex-direction: column;
     }
 }
+
+
+.prevention {
+    margin-top: 10px;
+}
+
+.category-boxes {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+    grid-template-rows: repeat(2, auto); /* Two rows with auto height */
+    gap: 75px; /* Gap between grid items */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+}
+
+.category-box {
+    width: 100px;
+    height: 100px; /* Adjust size as needed */
+    background-color: #f0f0f0; /* Background color of the box */
+    border-radius: 5px; /* Rounded corners */
+    display: flex;
+    flex-direction: column;
+    color: #287E74;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #ccc; /* Border for the box */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.category-name {
+    position: relative;
+    top: 20px;
+}
