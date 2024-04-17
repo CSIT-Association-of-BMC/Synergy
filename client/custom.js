@@ -5,14 +5,9 @@ document.addEventListener('DOMContentLoaded', async function() {
   let latitude;
   let longitude;
   try {
-    // Asynchronously obtain the user's current position
-    const position = await new Promise((resolve, reject) => {
-        navigator.geolocation.getCurrentPosition(resolve, reject);
-    });
-    
     // Once position is obtained, extract latitude and longitude
-     latitude = position.coords.latitude;
-     longitude = position.coords.longitude;
+     latitude = localStorage.getItem('Latitude');
+     longitude = localStorage.getItem('Longitude');
 
     // Now you can use latitude and longitude for further processing
     console.log('Latitude:', latitude);

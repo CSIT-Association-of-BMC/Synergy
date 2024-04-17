@@ -7,6 +7,6 @@ const router = express.Router();
 router.post('/getCurrentAQI', authenticateJWT, getCurrentAQI);
 router.post('/getHistory', getHistory);
 router.get('/search', authenticateJWT ,searchAQI);
-router.get('/nearbyaqi' ,nearbyAQI);
+router.post('/nearbyaqi' ,nearbyAQI);
 
 export default router;

@@ -122,7 +122,6 @@ export const getHistory = async (req, res) => {
   } catch (error) {
     console.error("There was a problem with the fetch operation:", error);
     res.status(500).json({ error: "Internal server error" });
-    m;
   }
 };
 

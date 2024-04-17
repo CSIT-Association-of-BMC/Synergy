@@ -1,3 +1,4 @@
+
 const bellIcon = document.getElementById('bell-icon');
 const notificationDropdown = document.getElementById('notification-dropdown');
 const signinModal = document.getElementById('signin-modal');
@@ -13,6 +14,9 @@ async function handleSuccess(position) {
     const longitude = position.coords.longitude;
     console.log("Latitude:", latitude);
     console.log("Longitude:", longitude);
+
+    localStorage.setItem('Latitude',latitude)
+    localStorage.setItem('Longitude',longitude)
 
     try {
         const apiUrl = "http://localhost:3000/aqi/getCurrentAQI";
@@ -38,6 +42,7 @@ async function handleSuccess(position) {
               }
         
               const responseData = await response.json();
+              console.log("iwehfifisbifbeihf");
               console.log(responseData);
               username.innerText = responseData.user.username;
               displayLocation.innerText = responseData.address;
@@ -171,6 +176,3 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
-
-
-
