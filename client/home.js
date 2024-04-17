@@ -1,38 +1,46 @@
 const bellIcon = document.getElementById('bell-icon');
 const notificationDropdown = document.getElementById('notification-dropdown');
-const aqiNotificationToggle = document.getElementById('aqi-notification');
-const dailyNotificationToggle = document.getElementById('daily-notification');
-const notificationTimeInput = document.getElementById('notification-time');
+const signinModal = document.getElementById('signin-modal');
+const signinBtn = document.getElementById('signin-btn');
+const closeBtn = document.querySelector('.close');
 
-bellIcon.addEventListener('click', toggleNotificationDropdown);
-
-function toggleNotificationDropdown() {
-    if (notificationDropdown.style.display === 'block') {
-        notificationDropdown.style.display = 'none';
+bellIcon.addEventListener('click', function() {
+    if (!isUserSignedIn()) {
+        showSigninModal();
     } else {
-        notificationDropdown.style.display = 'block';
-    }
-}
-
-dailyNotificationToggle.addEventListener('change', function() {
-    if (this.checked) {
-        notificationTimeInput.disabled = false;
-    } else {
-        notificationTimeInput.disabled = true;
+        toggleNotificationDropdown();
     }
 });
 
-const content = document.querySelector('.content');
+signinBtn.addEventListener('click', function() {
+    window.location.href = 'index.html';
+});
+
+closeBtn.addEventListener('click', function() {
+    hideSigninModal();
+});
 
 function toggleNotificationDropdown() {
     if (notificationDropdown.style.display === 'block') {
         notificationDropdown.style.display = 'none';
-        content.classList.remove('blur');
     } else {
         notificationDropdown.style.display = 'block';
-        content.classList.add('blur');
     }
 }
+
+function isUserSignedIn() {
+    // Implement your logic to check if the user is signed in
+    return false; // For demonstration purposes, always return false
+}
+
+function showSigninModal() {
+    signinModal.style.display = 'block';
+}
+
+function hideSigninModal() {
+    signinModal.style.display = 'none';
+}
+
 
 function handleSuccess(position) {
     const latitude = position.coords.latitude;
@@ -64,6 +72,7 @@ function requestLocationPermission() {
 
 // Call the function to request location permission
 requestLocationPermission();
+
 document.addEventListener("DOMContentLoaded", function() {
     var categoryBoxes = document.querySelectorAll('.category-box');
     var preventionContents = document.querySelectorAll('.prevention-content');
