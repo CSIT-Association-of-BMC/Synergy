@@ -80,3 +80,54 @@ export const getCurrentAQI = async (req, res) => {
     }
   };
   
+
+  export const getHistory = async (req, res) => {
+    // Get the current date and time
+        const now = new Date();
+
+        // Calculate the total hours from 0:00 to now
+        const hoursSinceMidnight = now.getHours();
+        const totalHours = hoursSinceMidnight + 1; 
+        console.log(totalHours)
+
+        // Google Air Quality API endpoint
+const apiUrl = `https://airquality.googleapis.com/v1/history:lookup?key=${process.env.GAQI_KEY}`;
+
+// Data payload for the POST request
+const requestData = {
+    hours: getTotalHoursSinceMidnight(),
+    location: {
+        latitude: 37.419734,
+        longitude: -122.0827784
+    }
+};
+
+    // Options for the fetch request
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestData)
+    };
+
+
+        try {
+            const response = await fetch(apiUrl, requestOptions);
+    
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+    
+            const data = await response.json();
+            console.log(data);
+            res.json({"data":data})
+            
+        } catch (error) {
+            console.error('There was a problem with the fetch operation:', error);
+            res.status(500).json({ error: 'Internal server error' });m
+        }
+    
+
+  };
+  
