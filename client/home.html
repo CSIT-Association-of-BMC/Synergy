@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AirAlly</title>
+    <style>
+        /* Define your CSS styles here */
+        .prevention-content {
+            display: none; /* Initially hide all prevention content */
+        }
+        .prevention-content.active {
+    display: block; /* Show content with 'active' class */
+}
+
+
+        /* Add any other CSS rules as needed */
+    </style>
+
     <link rel="stylesheet" href="home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -129,9 +142,7 @@
 
             <div id="dialog-box-third" class="dialog-box">
                 <h2 class="prevention">Preventive Measures</h2>
-
                 <i id="closeit" class="fa-solid fa-x fa-l closeicon"></i>
-
                 <div id="third-box" class="category-boxes">
                     <div class="category-box" id="general-box">
                         <i class="fa-solid fa-person fa-2xl" style="color: #287e74;"></i>
@@ -151,26 +162,25 @@
                     </div>
                 </div>
                 <div class="prevention-measures">
-                <div class="prevention-content" id="general-content">
-                    <!-- General preventive measures content -->
-                    <p>General preventive measures content goes here.</p>
+                    <div class="prevention-content" id="general-content">
+                        <!-- General preventive measures content -->
+                        <p>General preventive measures content goes here.</p>
+                    </div>
+                    <div class="prevention-content" id="elderly-content">
+                        <!-- Elderly preventive measures content -->
+                        <p>Elderly preventive measures content goes here.</p>
+                    </div>
+                    <div class="prevention-content" id="pregnant-content">
+                        <!-- Pregnant preventive measures content -->
+                        <p>Pregnant preventive measures content goes here.</p>
+                    </div>
+                    <div class="prevention-content" id="respiratory-content">
+                        <!-- Respiratory patient preventive measures content -->
+                        <p>Respiratory patient preventive measures content goes here.</p>
+                    </div>
                 </div>
-                <div class="prevention-content" id="elderly-content">
-                    <!-- Elderly preventive measures content -->
-                    <p>Elderly preventive measures content goes here.</p>
-                </div>
-                <div class="prevention-content" id="pregnant-content">
-                    <!-- Pregnant preventive measures content -->
-                    <p>Pregnant preventive measures content goes here.</p>
-                </div>
-                <div class="prevention-content" id="respiratory-content">
-                    <!-- Respiratory patient preventive measures content -->
-                    <p>Respiratory patient preventive measures content goes here.</p>
-                </div>
-                </div>
-
             </div>
-            
+                        
                 </div>
             </div>
         </div>

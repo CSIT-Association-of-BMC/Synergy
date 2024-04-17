@@ -8,6 +8,45 @@ const username = document.getElementById('username');
 const displayLocation = document.getElementsByClassName("real-time-location")[0];
 const aqi = document.getElementsByClassName("aqi-number")[0];
 const aqi_category = document.getElementsByClassName("aqi-category")[0];
+const searchIcon = document.getElementById('search-icon');
+
+
+
+searchIcon.addEventListener('click', async function(event) {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+    
+    // Get the keyword from the search input
+    const keyword = document.getElementById('search-input').value;
+
+    try {
+        // Make the fetch request to '/search' endpoint with the keyword as a query parameter
+        const response = await fetch(`http://localhost:3000/aqi/search?keyword=${encodeURIComponent(keyword)}`);
+
+        // Check if the response is successful
+        if (response.ok) {
+            // Parse the response JSON
+            const resp = await response.json();
+console.log(resp);          
+          let searchData = resp.AQI
+            // Handle the search data here
+            console.log(searchData);
+            username.innerText = searchData.user.username;
+            displayLocation.innerText = searchData.address;
+            aqi.innerHTML = `<p> ${searchData.data.indexes[0].aqi} </p>`;
+            aqi_category.innerText = searchData.data.indexes[0].category;
+            return
+        } else {
+            // If response is not ok, log the error
+            console.error('Search request failed:', response.status);
+            return
+        }
+    } catch (error) {
+        // Log any errors that occur during the fetch request
+        console.error('Error occurred during search request:', error);
+    }
+});
+
 
 async function handleSuccess(position) {
     const latitude = position.coords.latitude;
