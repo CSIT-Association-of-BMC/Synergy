@@ -2,7 +2,6 @@ import { getClient } from "../config.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import fetch from "node-fetch";
-
 export const getCurrentAQI = async (req, res) => {
   let client;
   try {
@@ -89,12 +88,15 @@ export const getHistory = async (req, res) => {
   // Google Air Quality API endpoint
   const apiUrl = `https://airquality.googleapis.com/v1/history:lookup?key=${process.env.GAQI_KEY}`;
 
+
+  const { latitude, longitude } = req.body;
+
   // Data payload for the POST request
   const requestData = {
-    hours: getTotalHoursSinceMidnight(),
+    hours: totalHours,
     location: {
-      latitude: 37.419734,
-      longitude: -122.0827784,
+      latitude: latitude,
+      longitude: longitude,
     },
   };
 
