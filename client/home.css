@@ -251,3 +251,69 @@ body {
 .see-more a:hover {
     cursor: pointer;
 }
+
+
+@media only screen and (max-width: 600px) {
+    .dialog-box {
+        margin: 10px;
+    }
+}
+
+.polluting-particles {
+    margin-top: 40px;
+}
+
+.pollutant {
+    margin-bottom: 15px;
+}
+
+.pollutant-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    background-color: #ddd;
+    height: 15px;
+    width: 300px;
+    border-radius: 10px;
+}
+
+.progress {
+    background-color: rgba(19, 230, 166, 0.698);
+    height: 100%;
+    border-radius: 10px;
+    width: 0%;
+    transition: width 0.5s ease-in-out;
+}
+
+#pm10-progress {
+    width: 45%;
+}
+
+#pm25-progress {
+    width: 25%;
+}
+
+#co-progress {
+    width: 85%;
+}
+
+#so2-progress {
+    width: 15%;
+}
+
+#no2-progress {
+    width: 50%;
+}
+
+#o3-progress {
+    width: 95%;
+}
+
+@media only screen and (max-width: 600px) {
+    .content {
+        display: flex;
+        flex-direction: column;
+    }
+}
