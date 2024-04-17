@@ -110,3 +110,144 @@ body {
 .nav-links li a:hover {
     text-decoration: underline;
 }
+
+
+.content {
+    display: flex;
+}
+
+.dialog-box {
+    width: 350px;
+    height: 400px;
+    margin: 80px;
+    background-color: #287E74;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 14px;
+}
+
+#bell-icon {
+    position: relative;
+    left: 160px;
+    top: 8px;
+    right: 10px;
+    height: auto;
+    width: auto;
+    z-index: 1;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.notification-dropdown {
+    display: none;
+    position: absolute;
+    top: 250px;
+    right: 900px;
+    background-color: white;
+    color:#287E74;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.notification-option {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.notification-option label {
+    margin-left: 5px;
+}
+
+.notification-option input[type="time"] {
+    margin-left: 20px;
+}
+
+.save-button {
+    background-color: #287e74;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+    background-color: #1e594f;
+    font-weight: bold;
+}
+
+
+.greeting {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 18px;;
+}
+
+#location-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: -20px;
+    margin-top: 20px;
+}
+
+.aqi {
+    margin-top: 20px;
+}
+
+.aqi-box {
+    background-color: #fff;
+    width: 250px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aqi-number {
+    font-size: 24px;
+    color: #287E74;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+}
+
+.aqi-category {
+    margin-top: 22px;
+    font-weight: bold;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.see-more {
+    margin-top: 44px;
+}
+
+.see-more a {
+    color: white;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.see-more a:hover {
+    cursor: pointer;
+}

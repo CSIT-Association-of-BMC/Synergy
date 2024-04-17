@@ -43,8 +43,42 @@
         </div>
     </nav>
 
-    </div>
+    <div class="content">
+        <div class="dialog-box">
+            <i id="bell-icon" class="fa-sharp fa-solid fa-bell fa-xl" style="color: #ffff;"></i>
+            <div class="notification-dropdown" id="notification-dropdown">
+                <div class="notification-option">
+                    <input type="checkbox" id="aqi-notification" class="notification-toggle">
+                    <label for="aqi-notification">Notify me when AQI is hazardous</label>
+                </div>
+                <div class="notification-option">
+                    <input type="checkbox" id="daily-notification" class="notification-toggle">
+                    <label for="daily-notification">Enable daily notifications</label>
+                    <input type="time" id="notification-time" disabled>
+                </div>
 
-    <script src="script.js"></script>
+                <button id="save-button" class="save-button">Save</button>
+            </div>
+            <div class="greeting">Hello, <span id="username">username</span></div>
+            <div class="location">
+                <i id="location-icon" class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
+                <div class="real-time-location">Real-time Location</div>
+            </div>
+            <div class="aqi">
+                <div class="aqi-box">
+                    <div class="aqi-number">
+                        <p>262</p>
+                    </div>
+                </div>
+                <div class="aqi-category">AQI Category</div>
+            </div>
+            <div class="see-more">
+                <a href="map.html">See AQI near your places></a>
+            </div>
+        </div>
+
+   
+
+    <script src="home.js"></script>
 </body>
 </html>
