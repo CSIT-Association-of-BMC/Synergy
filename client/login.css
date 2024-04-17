@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    height: 100vh;
+}
+
+.intro {
+    flex: 2; /* Take up 2/5 of the available width */
+    background-color: #f0f0f0;
+    color: #287E74;
+    font-weight: bold;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 96px;
+}
+
+.subtitle {
+    font-size: 18px;
+}
+
+
+.signup-container {
+    flex: 3; /* Take up 3/5 of the available width */
+    background-color: #287E74;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#signup-form {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+#signup-form input {
+    padding: 10px;
+    width: 400px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    flex-grow: 1; /* Allow the input fields to grow and occupy equal space */
+}
+
+#signup-form button {
+    padding: 10px;
+    width: 60%;
+    align-self: center;
+    margin-top: 10px;
+    border: none;
+    border-radius: 100px;
+    background-color: white;
+    color: #287E74;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#signup-form button:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+
+.signup-content {
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.signup-content h2 {
+    margin-bottom: 20px;
+}
+
+.signup-container p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.signup-container a {
+    color: white;
+}
+
+.signup-container a:hover {
+    cursor: pointer;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    body {
+        flex-direction: column;
+        display: grid;
+        grid-template-rows: 0.5fr 2fr;
+        height: 100vh;
+    }
+
+    .intro {
+        flex: 1; /* Take up full width when in mobile view */
+    }
+
+    .title {
+        font-size: 64px;
+    }
+    
+    .subtitle {
+        font-size: 16px;
+    }
+    
+
+    .signup-container {
+        flex: 1; /* Take up full width when in mobile view */
+    }
+
+    #signup-form input {
+        width: 90%; /* Adjust width of input fields */
+    }
+
+    #signup-form button {
+        font-size: 16px;
+        width: 70%; /* Adjust width of button */
+        align-self: center;
+    }
+}
