@@ -111,7 +111,6 @@ body {
     text-decoration: underline;
 }
 
-
 .content {
     display: flex;
 }
@@ -352,3 +351,24 @@ body {
     position: relative;
     top: 20px;
 }
+
+.prevention-content {
+    display: none;
+}
+
+.active-content {
+    display: block;
+}
+
+.closeicon {
+    position: relative;
+    top: 10px;
+    left: 160px;
+    cursor: pointer;
+    display: none; /* Hide initially */
+}
+
+.prevention-content.active-content ~ .closeicon {
+    display: block; /* Show when the corresponding content is active */
+}
+

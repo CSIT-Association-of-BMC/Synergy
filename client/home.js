@@ -64,5 +64,54 @@ function requestLocationPermission() {
 
 // Call the function to request location permission
 requestLocationPermission();
+document.addEventListener("DOMContentLoaded", function() {
+    var categoryBoxes = document.querySelectorAll('.category-box');
+    var preventionContents = document.querySelectorAll('.prevention-content');
+    var closeicons = document.getElementsByClassName('closeicon');
+
+    // Function to hide all prevention contents and show only the clicked one
+    function showPreventionContent(index) {
+        preventionContents.forEach(function(content) {
+            content.style.display = 'none';
+        });
+        preventionContents[index].style.display = 'block';
+
+        // Show the close icon for the current content
+        closeicons[index].style.display = 'block';
+    }
+
+    categoryBoxes.forEach(function(box, index) {
+        box.addEventListener('click', function() {
+            // Hide all category boxes
+            categoryBoxes.forEach(function(categoryBox) {
+                categoryBox.style.display = 'none';
+            });
+
+            // Show the corresponding content based on the index
+            showPreventionContent(index);
+        });
+    });
+
+    // Function to reset to initial state
+    function resetState() {
+        preventionContents.forEach(function(content) {
+            content.style.display = 'none';
+        });
+        categoryBoxes.forEach(function(categoryBox) {
+            categoryBox.style.display = 'block';
+        });
+        closeicons.forEach(function(closeicon) {
+            closeicon.style.display = 'none';
+        });
+    }
+
+    // Add event listener for each close icon
+    for (var i = 0; i < closeicons.length; i++) {
+        closeicons[i].addEventListener('click', function() {
+            resetState();
+        });
+    }
+});
+
 
 
