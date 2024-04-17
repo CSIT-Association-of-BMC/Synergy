@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Navbar styles */
+.first-navbar {
+    background-color: white;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: #287E74;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.search-box {
+    flex-grow: 0.15;
+    margin: 0 10px;
+    position: relative;
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 8px; /* Space for search icon */
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border: 0.5px solid #287E74;
+}
+
+#search-icon {
+    position: absolute;
+    right: 1px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.user-profile {
+    position: relative;
+}
+
+.user-icon {
+    margin-right: 40px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-content a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+}
+
+/* Show dropdown on hover */
+.user-profile:hover .dropdown-content {
+    display: block;
+}
+
+.second-navbar {
+    background-color: #287E74;
+    color: #fff;
+}
+
+.second-navbar .container {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    display: inline-block;
+}
+
+.nav-links li a {
+    display: block;
+    color: #fff;
+    font-size: 19px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.nav-links li a:hover {
+    text-decoration: underline;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+}
+
+.left-dialog {
+    width: 75%;
+    /* background-color: lightgray; */
+    /* overflow-y: auto; */
+    border: 2px solid #287E74;
+    margin: 20px; /* Apply margin to all sides */
+    margin-bottom: 10px !important; /* Specific margin for bottom */
+    height: 550px;
+  }
+  
+  
+.right-dialog {
+  width: 25%;
+  /* background-color: lightblue; */
+  /* overflow-y: auto; */
+}
+.table {
+  width: 100%;
+}
+.table th,
+.table td {
+  padding: 8px;
+  text-align: left;
+}
