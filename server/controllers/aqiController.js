@@ -13,7 +13,7 @@ export const getCurrentAQI = async (req, res) => {
         method: 'GET',
       };
   
-      const reverseCoding = await fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${latitude}&lon=${longitude}&format=json&apiKey=c69a0bbed5eb4cee95e96a15f72c54bc`, requestOptions);
+      const reverseCoding = await fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${latitude}&lon=${longitude}&format=json&apiKey=${process.env.GREV_API}`, requestOptions);
       const result = await reverseCoding.json();
       const userAddress = `${result.results[0].city},${result.results[0].country}`
   
