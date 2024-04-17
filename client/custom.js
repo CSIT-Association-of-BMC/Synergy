@@ -90,23 +90,19 @@ document.addEventListener('DOMContentLoaded', function() {
           color: '#55596e',
           show: true,
         },
+        type:'numeric',
+        stepSize: 50,
+        floating: false,
+        min: 0,
+        max: 500,
+        decimalsInFloat: 0,
+        tickPlacement: 'between',
         labels: {
           formatter: function (value) {
-            return value;
+            return value.toFixed();
           },
           style: {
             colors: '#000',
-          },
-          // Custom labels from 0 to 400 with a difference of 50
-          tickAmount: 9,
-          min: 0,
-          max: 400,
-          tickPlacement: 'between',
-          tickInterval: 50,
-          labels: {
-            formatter: function (value) {
-              return value;
-            }
           },
         },
       },
