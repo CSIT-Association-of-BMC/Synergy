@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #cbfdf8;
+}
+
+.login-dialog {
+    background-color: #fff;
+    border-radius: 8px;
+    background: linear-gradient(to bottom, #339f93a8, #F0F0F0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+    height: 80%;
+    max-height: 400px;
+}
+
+.login-content {
+    margin-top: 80px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="password"],
+button {
+    width: 85%;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 28px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    margin-top: 20px;
+    width: 40%;
+    background-color: #287E74;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.login-content p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #287E74;
+    font-weight: 600;
+}
+
+.login-content a {
+    color: #287E74;
+}
+
+.login-content a:hover {
+    cursor: pointer;
+}
