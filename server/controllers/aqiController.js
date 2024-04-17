@@ -65,7 +65,7 @@ export const getCurrentAQI = async (req, res) => {
         req.user.username = "There"
     }
 
-      res.json({"user": req.user ,message: 'Data', data });
+      res.json({"user": req.user ,data: data });
     } catch (error) {
       console.error('Error during login:', error);
       res.status(500).json({ error: 'Internal server error' });
