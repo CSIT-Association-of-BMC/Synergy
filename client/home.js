@@ -3,6 +3,89 @@ const notificationDropdown = document.getElementById('notification-dropdown');
 const signinModal = document.getElementById('signin-modal');
 const signinBtn = document.getElementById('signin-btn');
 const closeBtn = document.querySelector('.close');
+const username = document.getElementById('username');
+const displayLocation = document.getElementsByClassName("real-time-location")[0];
+const aqi = document.getElementsByClassName("aqi-number")[0];
+const aqi_category = document.getElementsByClassName("aqi-category")[0];
+
+async function handleSuccess(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    console.log("Latitude:", latitude);
+    console.log("Longitude:", longitude);
+
+    try {
+        const apiUrl = "http://localhost:3000/aqi/getCurrentAQI";
+  
+        const data = {
+          longitude: longitude,
+          latitude: latitude,
+        };
+  
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        };
+  
+        if(latitude && longitude) {
+            const response = await fetch(apiUrl, options);
+            if (!response.ok) {
+                alert("Something went wrong");
+                return
+              }
+        
+              const responseData = await response.json();
+              console.log(responseData);
+              username.innerText = responseData.user.username;
+              displayLocation.innerText = responseData.address;
+              aqi.innerHTML = `<p> ${responseData.data.indexes[0].aqi} </p>`;
+              aqi_category.innerText = responseData.data.indexes[0].category;
+              console.log(responseData.data.indexes[0].category);
+
+
+              return
+      
+        }
+        alert("Failed to get current location");
+        
+        return
+  
+      } catch (error) {
+          console.error("There was a problem with the fetch operation:", error);
+        }
+    
+  
+
+}
+
+// Function to request location permission
+function requestLocationPermission() {
+    // Check if geolocation is supported by the browser
+    if ("geolocation" in navigator) {
+        // Request location permission
+        navigator.geolocation.getCurrentPosition(
+            // Success callback
+            function(position) {
+                handleSuccess(position);
+            },
+            // Error callback
+            function(error) {
+                console.error("Error getting location:", error);
+                reject(error);
+            }
+        );
+    } else {
+        console.error("Geolocation is not supported by this browser.");
+        // Handle lack of geolocation support
+    }
+}
+
+// Call the function to request location permission
+requestLocationPermission();
+
 
 bellIcon.addEventListener('click', function() {
     if (!isUserSignedIn()) {
@@ -29,7 +112,6 @@ function toggleNotificationDropdown() {
 }
 
 function isUserSignedIn() {
-    // Implement your logic to check if the user is signed in
     return false; // For demonstration purposes, always return false
 }
 
@@ -40,38 +122,6 @@ function showSigninModal() {
 function hideSigninModal() {
     signinModal.style.display = 'none';
 }
-
-
-function handleSuccess(position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-    console.log("Latitude:", latitude);
-    console.log("Longitude:", longitude);
-    // You can do further processing with latitude and longitude here
-}
-
-// Function to request location permission
-function requestLocationPermission() {
-    // Check if geolocation is supported by the browser
-    if ("geolocation" in navigator) {
-        // Request location permission
-        navigator.geolocation.getCurrentPosition(
-            // Success callback
-            handleSuccess,
-            // Error callback
-            function(error) {
-                console.error("Error getting location:", error);
-                // Handle errors here
-            }
-        );
-    } else {
-        console.error("Geolocation is not supported by this browser.");
-        // Handle lack of geolocation support
-    }
-}
-
-// Call the function to request location permission
-requestLocationPermission();
 
 document.addEventListener("DOMContentLoaded", function() {
     var categoryBoxes = document.querySelectorAll('.category-box');

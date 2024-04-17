@@ -337,7 +337,7 @@ body {
 }
 
 #pm10-progress {
-    width: 45%;
+    width: 100%;
 }
 
 #pm25-progress {

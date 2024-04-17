@@ -1,5 +1,69 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var options = {
+var sampleData = [];
+
+document.addEventListener('DOMContentLoaded', async function() {
+
+  let latitude;
+  let longitude;
+  try {
+    // Asynchronously obtain the user's current position
+    const position = await new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+    
+    // Once position is obtained, extract latitude and longitude
+     latitude = position.coords.latitude;
+     longitude = position.coords.longitude;
+
+    // Now you can use latitude and longitude for further processing
+    console.log('Latitude:', latitude);
+    console.log('Longitude:', longitude);
+    
+    // Call a function or perform any action that requires latitude and longitude
+    // Example: fetchAQIData(latitude, longitude);
+} catch (error) {
+    console.error('Error obtaining position:', error);
+    return
+}
+
+  try {
+      const apiUrl = "http://localhost:3000/aqi/getHistory";
+
+      const data = {
+        longitude: longitude,
+        latitude: latitude,
+      };
+
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      };
+
+
+      if(latitude && longitude) {
+          const response = await fetch(apiUrl, options);
+          if (!response.ok) {
+              alert("Something went wrong");
+              return
+            }
+      
+            const responseData = await response.json();
+            console.log(responseData);
+
+            for (let i=0; i < responseData.data.hoursInfo.length; i++) {
+              console.log(responseData.data.hoursInfo[i].indexes[0].aqi);
+              sampleData.push(responseData.data.hoursInfo[i].indexes[0].aqi)
+            }
+      }
+    } catch (error) {
+        console.error("There was a problem with the fetch operation:", error);
+        return
+      }
+
+    
+  var options = {
       series: [{
         name: 'AQI',
         data: [] // Data for 24 hours will be updated dynamically
@@ -112,7 +176,6 @@ document.addEventListener('DOMContentLoaded', function() {
     chart.render();
   
     // Sample data (replace with actual AQI data)
-    var sampleData = [15, 25, 35, 45, 55, 65, 75, 85, 95, 105, 115, 125, 135, 145, 155, 165, 175, 185, 195, 205, 215, 225, 235, 245];
   
     var labels = Array.from({ length: 24 }, (_, i) => {
       if (i === 0) return '12am';

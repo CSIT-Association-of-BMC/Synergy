@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import 'dotenv/config'
 import authRoutes from './routes/authRoutes.js';
 import aqiRoutes from './routes/aqiRoutes.js';
+import cors from "cors";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,6 +17,8 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization'); // Allow specified headers
     next();
 });
+
+app.use(cors());
 
 
 // Routes 
