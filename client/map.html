@@ -1,130 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Map</title>
-    <link rel="stylesheet" href="map.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
+    <link rel="stylesheet" href="map.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-  </head>
-  <body>
+
+</head>
+<body>
     <!-- First Navbar -->
     <nav class="first-navbar">
-      <div class="container">
-        <div class="logo">AirAlly</div>
-        <div class="search-box">
-          <input
-            type="text"
-            id="search-input"
-            placeholder="Search AQI of cities..."
-          />
-          <i class="fas fa-search" id="search-icon" style="color: #287e74"></i>
+        <div class="container">
+            <div class="logo">AirAlly</div>
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search AQI of cities...">
+                <i class="fas fa-search" id="search-icon"  style="color: #287e74;"></i>
+            </div>
+            <div class="user-profile">
+                <div class="user-icon"></div>
+                <i class="fa-solid fa-user fa-2xl" style="color: #287e74;"></i>
+                <div class="dropdown-content">
+                    <a href="./login.html">Logout</a>
+                </div>
+            </div>
         </div>
-        <div class="user-profile">
-          <div class="user-icon"></div>
-          <i class="fa-solid fa-user fa-xl" style="color: #287e74"></i>
-          <div class="dropdown-content">
-            <a href="./login.html">Logout</a>
-          </div>
-        </div>
-      </div>
     </nav>
 
     <!-- Second Navbar -->
     <nav class="second-navbar">
-      <div class="container">
-        <ul class="nav-links">
-          <li><a href="./home.html">Home</a></li>
-          <li><a href="./map.html">Map</a></li>
-        </ul>
-      </div>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="./home.html">Home</a></li>
+                <li><a href="./map.html">Map</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <div class="container">
-      <div class="left-dialog" id="leftDialog">
-        <div  id='map'  style='height:550px;'  />  
+    <!-- Content Section -->
+    <div class="content">
+        <!-- Left Section for Map -->
+        <div class="left-section">
+            <!-- Map will be rendered here -->
+            <div id="map"></div>
+        </div>
+
+        <!-- Right Section for Nearby Places -->
+        <div class="right-section">
+            <h2 class="nearby-places">Nearby Places</h2>
+            <!-- Table for listing places and their AQI -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Place</th>
+                        <th>AQI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Pokhara</td>
+                        <td>45</td>
+                    </tr>
+                    <tr>
+                        <td>Kathmandu</td>
+                        <td>232</td>
+                    </tr>
+                    <tr>
+                        <td>Chitwan</td>
+                        <td>75</td>
+                    </tr>
+                    <tr>
+                        <td>Biratnagar</td>
+                        <td>77</td>
+                    </tr>
+                    <tr>
+                        <td>Butwal</td>
+                        <td>22</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-      <div class="right-dialog" id="rightDialog">
-        <table class="table" id="placesTable">
-          <thead>
-            <tr>
-              <th>Place</th>
-              <th>AQI</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Table content will be dynamically populated using JavaScript -->
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <script>
-      // Assuming you have JavaScript code to fetch data from an API and populate the left and right dialogs
-
-      // Example data for nearby places and their AQI
-      var placesData = [
-        { place: "Place 1", aqi: 30 },
-        { place: "Place 2", aqi: 45 },
-        { place: "Place 3", aqi: 55 },
-        // Add more data as needed
-      ];
-
-      // Function to populate the right dialog (places table)
-      function populatePlacesTable() {
-        var tableBody = document.querySelector("#placesTable tbody");
-        placesData.forEach(function (place) {
-          var row = document.createElement("tr");
-          row.innerHTML = `
-                <td>${place.place}</td>
-                <td>${place.aqi}</td>
-            `;
-          tableBody.appendChild(row);
-        });
-      }
-
-      // Populate the right dialog when the page loads
-      populatePlacesTable();
-
-      // Assuming you have JavaScript code to show/hide the dialogs based on user interaction
-    </script>
-
-<script  src="https://maps.googleapis.com/maps/api/js"></script>  
-  
-<script>  
-      var  map  =  new  google.maps.Map(document.getElementById('map'),  {  
-            center:  new  google.maps.LatLng(27.7172,  85.3240),  
-            mapTypeId:  google.maps.MapTypeId.ROADMAP,  
-            zoom:  11  
-      });  
-  
-      var  t  =  new  Date().getTime();  
-      var  waqiMapOverlay  =  new  google.maps.ImageMapType({  
-            getTileUrl:  function  (coord,  zoom)  {  
-                  return  'https://tiles.aqicn.org/tiles/usepa-aqi/'  +  zoom  +  "/"  +  coord.x  +  "/"  +  coord.y  +  ".png?token=d1f9e26d4634954a0523b621749b1bddb655e8c1";  
-            },  
-            name:  "Air  Quality",  
-      });  
-  
-      map.overlayMapTypes.insertAt(0,  waqiMapOverlay);  
-</script>
-
-
-  </body>
+</body>
 </html>

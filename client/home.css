@@ -372,3 +372,27 @@ body {
     display: block; /* Show when the corresponding content is active */
 }
 
+.charts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 60px;
+  }
+  
+  .charts-card {
+    background-color: #b1d5c2;
+    margin-bottom: 20px;
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .chart-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #287E74;
+  }
+
+  
