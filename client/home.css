@@ -200,10 +200,24 @@ body {
 
 .modal-content {
     background-color: #fefefe;
+    color: #287E74;
+    text-align: center;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 30%; /* Could be more or less, depending on screen size */
+    font-size: 20px;
+}
+
+#signin-btn {
+    border: none;
+    padding: 8px;
+    background-color: #287E74;
+    color: white;
+    font-size: 14px;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
 }
 
 /* Add styles for the close button */
