@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
       chart: {
         type: 'bar',
         background: 'transparent',
-        height: 400,
+        height: 600,
         toolbar: {
           show: false,
         },
