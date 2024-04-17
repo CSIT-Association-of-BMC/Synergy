@@ -9,6 +9,14 @@ export const getCurrentAQI = async (req, res) => {
     try {
       const { longitude, latitude } = req.body;
 
+      const requestOptions = {
+        method: 'GET',
+      };
+  
+      const reverseCoding = await fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${latitude}&lon=${longitude}&format=json&apiKey=c69a0bbed5eb4cee95e96a15f72c54bc`, requestOptions);
+      const result = await reverseCoding.json();
+      const userAddress = `${result.results[0].city},${result.results[0].country}`
+  
       if (req.user.username !== "null") {
         client = getClient()
         client.connect()
@@ -65,7 +73,7 @@ export const getCurrentAQI = async (req, res) => {
         req.user.username = "There"
     }
 
-      res.json({"user": req.user ,data: data });
+      res.json({"user": req.user, "address": userAddress, data: data });
     } catch (error) {
       console.error('Error during login:', error);
       res.status(500).json({ error: 'Internal server error' });
