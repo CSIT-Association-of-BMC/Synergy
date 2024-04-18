@@ -9,8 +9,10 @@ const displayLocation = document.getElementsByClassName("real-time-location")[0]
 const aqi = document.getElementsByClassName("aqi-number")[0];
 const aqi_category = document.getElementsByClassName("aqi-category")[0];
 const searchIcon = document.getElementById('search-icon');
-
-
+const general_health_recommendation = document.getElementById("general-content")
+const elderly_health_recommendation = document.getElementById("elderly-content")
+const pregnent_health_recommendation = document.getElementById("pregnant-content")
+const respiratory_health_recommendation = document.getElementById("respiratory-content")
 
 searchIcon.addEventListener('click', async function(event) {
     // Prevent the default form submission behavior
@@ -27,14 +29,13 @@ searchIcon.addEventListener('click', async function(event) {
         if (response.ok) {
             // Parse the response JSON
             const resp = await response.json();
-console.log(resp);          
-          let searchData = resp.AQI
+            console.log(`RESP IS: aqy `, resp.AQIInfo.user.username);
+          let searchData = resp
             // Handle the search data here
-            console.log(searchData);
-            username.innerText = searchData.user.username;
-            displayLocation.innerText = searchData.address;
-            aqi.innerHTML = `<p> ${searchData.data.indexes[0].aqi} </p>`;
-            aqi_category.innerText = searchData.data.indexes[0].category;
+            username.innerText = resp.AQIInfo.user.username;
+            displayLocation.innerText = resp.AQIInfo.address;
+            aqi.innerHTML = `<p> ${resp.AQIInfo.data.indexes[0].aqi} </p>`;
+            aqi_category.innerText = resp.AQIInfo.data.indexes[0].category;
             return
         } else {
             // If response is not ok, log the error
@@ -81,17 +82,17 @@ async function handleSuccess(position) {
               }
         
               const responseData = await response.json();
-              console.log("iwehfifisbifbeihf");
               console.log(responseData);
               username.innerText = responseData.user.username;
               displayLocation.innerText = responseData.address;
               aqi.innerHTML = `<p> ${responseData.data.indexes[0].aqi} </p>`;
               aqi_category.innerText = responseData.data.indexes[0].category;
-              console.log(responseData.data.indexes[0].category);
-
+              general_health_recommendation.innerHTML = `<p> ${responseData.data.healthRecommendations.generalPopulation} </p>`     
+              elderly_health_recommendation.innerHTML  = `<p> ${responseData.data.healthRecommendations.elderly} </p>`
+              respiratory_health_recommendation.innerHTML = `<p> ${responseData.data.healthRecommendations.lungDiseasePopulation} </p>`
+              pregnent_health_recommendation.innerHTML = `<p> ${responseData.data.healthRecommendations.pregnantWomen} </p>`
 
               return
-      
         }
         alert("Failed to get current location");
         
